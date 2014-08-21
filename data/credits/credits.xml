@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<credits>
+	<credit>
+		<person
+			name="micro_giraffe"
+		/>
+		<resource
+			name="pizzapunt logo"
+			url="https://openclipart.org/detail/183841/pizza-slice-in-tango-colors-by-micro_giraffe-183841"
+		/>
+	</credit>
+		<credit>
+		<resource
+			name="text pizzapunt logo"
+			url="http://openfontlibrary.org/font/medievalsharp"
+		/>
+	</credit>
+</credits>
