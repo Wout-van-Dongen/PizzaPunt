@@ -20,11 +20,11 @@ INSERT INTO adres (AdresID, Straat, Huisnr, Gemeente, Postcode) VALUES(4,'Mijnwe
 -- Klant -------------------------------------------------
 -- -------------------------------------------------------
 
-INSERT INTO klant (KlantID, Naam, Voornaam) VALUES(1,'Jefke', 'Vanop Den Hoeck');
-INSERT INTO klant (KlantID, Naam, Voornaam) VALUES(2,'Stefanie', 'Kiezelmans');
-INSERT INTO klant (KlantID, Naam, Voornaam) VALUES(3,'Rocky', 'Rangers');
-INSERT INTO klant (KlantID, Naam, Voornaam) VALUES(5,'Christine', 'Goevearts');
-INSERT INTO klant (KlantID, Naam, Voornaam) VALUES(4,'Kevin', 'Kiezelmans');
+INSERT INTO klant (KlantID, Vooraam, Naam) VALUES(1,'Jefke', 'Vanop Den Hoeck');
+INSERT INTO klant (KlantID, Voornaam, Naam) VALUES(2,'Stefanie', 'Kiezelmans');
+INSERT INTO klant (KlantID, Voornaam, Naam) VALUES(3,'Rocky', 'Rangers');
+INSERT INTO klant (KlantID, Voornaam, Naam) VALUES(5,'Christine', 'Goevearts');
+INSERT INTO klant (KlantID, Voornaam, Naam) VALUES(4,'Kevin', 'Kiezelmans');
 
 -- -------------------------------------------------------
 -- KlantAdres --------------------------------------------

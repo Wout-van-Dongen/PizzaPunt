@@ -15,10 +15,10 @@ body{
 header{
 	background:#EDD400;
 	/*CSS3 Gradient*/
-	background:-moz-linear-gradient(left,#FCE94F,#EDD400);
-	background: -webkit-linear-gradient(left,#FCE94F,#EDD400);
-	background: -ms-linear-gradient(left,#FCE94F,#EDD400);
-	background: -o-linear-gradient(left,#FCE94F,#EDD400);
+	background:-moz-linear-gradient(left,#ff7700,#EDD400);
+	background: -webkit-linear-gradient(left,#ff7700,#EDD400);
+	background: -ms-linear-gradient(left,#ff7700,#EDD400);
+	background: -o-linear-gradient(left,#ff7700,#EDD400);
 
 	overflow-y:hidden;
 	border-bottom:10px solid #000099;
