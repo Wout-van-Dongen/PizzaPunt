@@ -12,10 +12,10 @@ USE `PizzaPunt` ;
 -- Table `PizzaPunt`.`Klant`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PizzaPunt`.`Klant` (
-  `KlantID` INT NOT NULL,
+  `Username` VARCHAR(255) NOT NULL,
   `Naam` VARCHAR(255) NOT NULL,
   `Voornaam` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`KlantID`))
+  PRIMARY KEY (`Username`))
 ENGINE = InnoDB;
 
 
@@ -63,16 +63,16 @@ ENGINE = InnoDB;
 -- Table `PizzaPunt`.`Bestellingen`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PizzaPunt`.`Bestellingen` (
-  `KlantID` INT NOT NULL,
+  `Username` VARCHAR(255) NOT NULL,
   `ProductID` INT NOT NULL,
   `Aantal` INT NOT NULL,
   `Tijdstip` TIMESTAMP NOT NULL,
   `Bedrag` DOUBLE NOT NULL,
-  PRIMARY KEY (`KlantID`, `ProductID`),
+  PRIMARY KEY (`Username`, `ProductID`),
   INDEX `fk_Bestellingen_Product_idx` (`ProductID` ASC),
   CONSTRAINT `fk_Bestellingen_Klant`
-    FOREIGN KEY (`KlantID`)
-    REFERENCES `PizzaPunt`.`Klant` (`KlantID`)
+    FOREIGN KEY (`Username`)
+    REFERENCES `PizzaPunt`.`Klant` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Bestellingen_Product`
@@ -150,17 +150,17 @@ ENGINE = InnoDB;
 -- Table `PizzaPunt`.`KlantAdres`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `PizzaPunt`.`KlantAdres` (
-  `KlantID` INT NOT NULL,
+  `Username` VARCHAR(255) NOT NULL,
   `AdresID` INT NOT NULL,
-  PRIMARY KEY (`KlantID`, `AdresID`),
+  PRIMARY KEY (`Username`, `AdresID`),
   CONSTRAINT `fk_KlantAdres_Adres`
     FOREIGN KEY (`AdresID`)
     REFERENCES `PizzaPunt`.`Adres` (`AdresID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_KlantAdres_Klant`
-    FOREIGN KEY (`KlantID`)
-    REFERENCES `PizzaPunt`.`Klant` (`KlantID`)
+    FOREIGN KEY (`Username`)
+    REFERENCES `PizzaPunt`.`Klant` (`Username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
