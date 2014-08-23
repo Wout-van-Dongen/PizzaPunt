@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `PizzaPunt`.`Klant` (
   `Username` VARCHAR(255) NOT NULL,
   `Naam` VARCHAR(255) NOT NULL,
   `Voornaam` VARCHAR(255) NOT NULL,
+  `Passwoord` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`Username`))
 ENGINE = InnoDB;
 
