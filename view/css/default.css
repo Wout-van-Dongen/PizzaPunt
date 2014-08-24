@@ -1,40 +1,53 @@
 
 
 body{
-	background:#9999ff;
-	
+    background:#9999ff;
+
 }
 
+section#user-status-section{
+    border-top:3px solid #000000;
+    border-bottom:3px solid #111111;
+    background:#000000;
+}
+
+section#user-status-section label{
+    color:#ffffff;
+}
+
+section#user-status-section form{
+    display:inline;
+}
 
 #wrapper{
-	width:800px;
-	margin:0px auto;
-	border:2px solid #000099;
+    width:800px;
+    margin:0px auto;
+    border:2px solid #000099;
 }
 
 header{
-	background:#EDD400;
-	/*CSS3 Gradient*/
-	background:-moz-linear-gradient(left,#ff7700,#EDD400);
-	background: -webkit-linear-gradient(left,#ff7700,#EDD400);
-	background: -ms-linear-gradient(left,#ff7700,#EDD400);
-	background: -o-linear-gradient(left,#ff7700,#EDD400);
+    background:#EDD400;
+    /*CSS3 Gradient*/
+    background:-moz-linear-gradient(left,#ff7700,#EDD400);
+    background: -webkit-linear-gradient(left,#ff7700,#EDD400);
+    background: -ms-linear-gradient(left,#ff7700,#EDD400);
+    background: -o-linear-gradient(left,#ff7700,#EDD400);
 
-	overflow-y:hidden;
-	border-bottom:10px solid #000099;
+    overflow-y:hidden;
+    border-bottom:10px solid #000099;
 }
 
 header img#logo{
-	width:150px;
-	height:150px;
-	float:left;
+    width:150px;
+    height:150px;
+    float:left;
 }
 
 header h1{
-	margin-top:100px;
-	font-size:50px;
-	font-weight:bolder;
-	float:left;
-	color:#000055;
+    margin-top:100px;
+    font-size:50px;
+    font-weight:bolder;
+    float:left;
+    color:#000055;
 
 }

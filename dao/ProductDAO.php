@@ -4,12 +4,12 @@ namespace PizzaPunt\dao;
 
 //Imports
 require_once("DataAccesObject.php");
-require_once("entities/Klant.php");
+require_once("entities/Product.php");
 
-class KlantDAO extends DataAccesObject {
+class ProductDAO extends DataAccesObject {
 
     public function readAll() {
-        $query = "select Username,Naam,Voornaam,Wachtwoord from Klant;";
+        $query = "select Username,Naam,Voornaam,Wachtwoord from Product;";
         $rs = $this->getPDO()->query($query);
         $this->free();
         $klanten = array();

@@ -6,6 +6,20 @@
         <link href="view/css/default.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
+        <section id="user-status-section">
+            <?php //if user is not logged  ?>
+            <form id="loginbar" method="post" action="#">
+                <label form="loginbar" for="username-login">Gebruikersnaam: </label>
+                <input id="username-login" type="text" name="username"/>
+                <label form="loginbar" for="wachtwoord-login">Wachtwoord: </label>
+                <input id="wachtwoord-login" type="password" name="wachtwoord"/>
+                <input type="submit" value="aanmelden"/>
+            </form>
+            <span>
+                <a href="#" title="registreren">Meld je hier aan als nieuwe klant.</a>
+            </span>
+            <?php //else show user options (name, logout) ?>
+        </section>
         <div id="wrapper">
             <header>
                 <figure>
@@ -20,16 +34,14 @@
             </section>
             <section id="pizzaaanbod">
                 <?php
-                    foreach($categories as $category ){
-                    print "<ul id='"+ $category->getName() + "'>";
-                        foreach($category->getItems() as $item){
-                            print "<li>cookie</li>";
-                        }
-                        print "</ul>";
-
-
+                foreach ($categories as $category) {
+                    print "<ul id='" . $category->getName() . "'>";
+                    foreach ($category->getItems() as $item) {
+                        print "<li>cookie</li>";
                     }
-                    ?>
+                    print "</ul>";
+                }
+                ?>
             </section>
 
         </div>

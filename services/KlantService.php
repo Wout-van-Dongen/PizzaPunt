@@ -3,21 +3,32 @@
 namespace PizzaPunt\services;
 
 //Imports
-require_once("/dao/KlantDAO.php");
+require_once("entities/Klant.php");
+require_once("dao/KlantDAO.php");
 
 class KlantService {
 
     private $klantDAO;
-    
-
+    private $tempArray = array();
 
     public function __construct() {
-        $klantDAO = new \PizzaPunt\dao\KlantDAO();
+        $this->klantDAO = new \PizzaPunt\dao\KlantDAO();
     }
 
     public function readAll() {
-         $klantDAO = new \PizzaPunt\dao\KlantDAO();
-        return $klantDAO->readAll();
+        return $this->klantDAO->readAll();
+    }
+
+    public function readKlant($username) {
+        return $this->klantDAO->readKlant($username);
+    }
+    
+    public function validate($username, $wachtwoord){
+        if($this->klantDAO->readKlant($username)->getWachtwoord()==$wachtwoord){
+        return true;
+        }else{
+        return false;
+        }
     }
 
 }

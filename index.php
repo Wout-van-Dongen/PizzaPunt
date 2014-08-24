@@ -1,34 +1,30 @@
 <?php
-
 namespace PizzaPunt;
 
+
+
 //Imports
+require_once ("entities/Klant.php");
 require_once ("services/KlantService.php");
 
-$service = new services\KlantService();
-
-$resultset = $service->readAll();
-
-print "<ul>";
-foreach ($resultset as $klant)
-{
-    print "<li><ul> ";
-    print "<li>";
-    print $klant["KlantID"];
-    print "</li>";
-        print "<li>";
-    print $klant["Naam"];
-     print "</li>";
-    print "<li>";
-    print $klant["V oornaam"];
-    print "</li>";
-    print "</ul></li>";
-}
-print "</ul";
+$klantService = new services\KlantService();
 
 
-if (empty($_GET))
-{
     include("view/templates/overzicht.php");
+if(!empty($_GET["username"])){
+    print $_GET["username"] .": ";
+    $klant = $klantService->readKlant($_GET["username"]);
+    
+    if(is_null($klant)){
+        print "klant is leeg!";
+    }
+    else{
+        print "whee";
+
+   print $klant->getUsername() ." ". $klant->getNaam() ." ". $klant->getVoornaam();
+    
+    }
+    
 }
+
 ?>
