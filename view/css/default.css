@@ -1,8 +1,9 @@
 
 
 body{
-    background:#9999ff;
-
+    background:#000000 url('../img/background-image-res.jpg') no-repeat;
+    background-image: url('../img/background-image-res.jpg'), url('../img/background-image-res-side.jpg'), url('../img/background-image-res-bottom.jpg');
+    background-repeat: no-repeat, repeat-x, repeat; 
 }
 
 section#user-status-section{

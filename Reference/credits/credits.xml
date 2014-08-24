@@ -15,4 +15,13 @@
 			url="http://openfontlibrary.org/font/medievalsharp"
 		/>
 	</credit>
+        <credit>
+		<person
+			name="Brittish Mum"
+		/>
+		<resource
+			name="background-image"
+			url="https://www.flickr.com/photos/insideabritishmumskitchen"
+		/>
+	</credit>
 </credits>

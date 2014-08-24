@@ -9,7 +9,7 @@ require_once("entities/Product.php");
 class ProductDAO extends DataAccesObject {
 
     public function readAll() {
-        $query = "select Username,Naam,Voornaam,Wachtwoord from Product;";
+        $query = "select ProductID,Naam,CategoryID,Prijs,Beschrijving from Product;";
         $rs = $this->getPDO()->query($query);
         $this->free();
         $klanten = array();
@@ -25,8 +25,7 @@ class ProductDAO extends DataAccesObject {
         $rs = $this->getPDO()->query($query);
                         $this->free();
                         
-                        
-        if (!is_null($rs)) {
+                        if (!is_null($rs)) {
             foreach($rs as $result){
             return new \PizzaPunt\entities\Klant($result["Username"], $result["Naam"], $result["Voornaam"], $result["Wachtwoord"]);
             }
