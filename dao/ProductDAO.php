@@ -16,7 +16,7 @@ class ProductDAO extends DataAccesObject {
         $this->free();
         $producten = array();
         foreach ($rs as $result) {
-            $product = new \PizzaPunt\entities\Product();
+            $product = new \PizzaPunt\entities\Product($result["ProductID"],$result["Naam"],$result["CategoryID"],1.5,$result["Beschrijving"]);
             array_push($producten, $product);
         }
         return $producten;
@@ -47,7 +47,7 @@ class ProductDAO extends DataAccesObject {
 
     public function readIngredienten($productID) {
                 //MySQL query
-        $query = "select IngredientID " .
+        $query = "select IngredientenID " .
                 "from Ingredienten " .
                 "inner join ProductIngredienten " .
                 "using(IngredientenID) " .
@@ -57,7 +57,7 @@ class ProductDAO extends DataAccesObject {
         $this->free();
         $ingredienten = array();
         foreach ($rs as $result) {
-            array_push($ingredienten, $result["IngredientID"]);
+            array_push($ingredienten, $result["IngredientenID"]);
         }
         return $ingredienten;
     }

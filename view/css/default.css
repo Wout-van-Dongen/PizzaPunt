@@ -3,7 +3,8 @@
 body{
     background:#000000 url('../img/background-image-res.jpg') no-repeat;
     background-image: url('../img/background-image-res.jpg'), url('../img/background-image-res-side.jpg'), url('../img/background-image-res-bottom.jpg');
-    background-repeat: no-repeat, repeat-x, repeat; 
+    background-repeat: no-repeat, repeat-x, repeat;
+    background-attachment: fixed;
 }
 
 section#user-status-section{
@@ -52,3 +53,19 @@ header h1{
     color:#000055;
 
 }
+
+/*Pizza lijst*/
+
+section#pizza-aanbod{
+    background-color:rgba(0,0,0,0.6);
+    
+}
+
+section#pizza-aanbod ul li{
+    background-color:rgba(200,200,255,0.3);
+    border:0px solid #000000;
+    padding:10px;
+    margin: 2px 10px;
+    border-radius: 10px
+}
+

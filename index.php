@@ -2,10 +2,14 @@
 namespace PizzaPunt;
 
 //Imports
-require_once ("entities/Klant.php");
-require_once ("services/KlantService.php");
+require_once ("entities/Product.php");
+require_once ("services/ProductService.php");
 
-$klantService = new services\KlantService();
+$productService = new services\ProductService();
+//$producten = $productService->readAll();
+
+$producten = $productService->readAll();
+
 
 include("view/templates/overzicht.php");
 

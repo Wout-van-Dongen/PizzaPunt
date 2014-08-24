@@ -12,7 +12,7 @@ class Product {
     private $ingredienten;
     private $beschikbaarheden;
 
-    public function __construct($productID, $naam, $category, $prijs, $beschrijving) {
+    public function __construct($productID, $naam, $category, $prijs, $beschrijving){
         $this->productID = $productID;
         $this->naam = $naam;
         $this->category = $category;
@@ -21,7 +21,7 @@ class Product {
         $this->ingredienten = array();
         $this->beschikbaarheden = array();
     }
-
+    
     //Adders
     public function addIngredient($ingredient) {
         array_push($this->ingredienten, $ingredient);
