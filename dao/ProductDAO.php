@@ -9,29 +9,57 @@ require_once("entities/Product.php");
 class ProductDAO extends DataAccesObject {
 
     public function readAll() {
+        //MySQL query
         $query = "select ProductID,Naam,CategoryID,Prijs,Beschrijving from Product;";
+        
         $rs = $this->getPDO()->query($query);
         $this->free();
-        $klanten = array();
+        $producten = array();
         foreach ($rs as $result) {
-            $klant = new \PizzaPunt\entities\Klant($result["Username"], $result["Naam"], $result["Voornaam"], $result["Wachtwoord"]);
-            array_push($klanten, $klant);
+            $product = new \PizzaPunt\entities\Product();
+            array_push($producten, $product);
         }
-        return $klanten;
+        return $producten;
     }
 
-    public function readKlant($username) {
-        $query = "select Username,Naam,Voornaam,Wachtwoord from Klant where Username = \"" . $username . "\";";
+    public function readProduct($productID) {
+        
+    }
+
+    public function readBeschikbaarheid($productID) {
+        //MySQL query
+        $query = "select DAY(BeginDatum) as begindag,MONTH(BeginDatum) as begindatum," .
+                "DAY(EindDatum) as einddag,MONTH(EindDatum) as einddatum " .
+                "from Beschikbaarheid " .
+                "inner join ProductBeschikbaarheid " .
+                "using(BeschikbaarheidID) " .
+                "where ProductID =  " . $productID . ";";
+        
         $rs = $this->getPDO()->query($query);
-                        $this->free();
-                        
-                        if (!is_null($rs)) {
-            foreach($rs as $result){
-            return new \PizzaPunt\entities\Klant($result["Username"], $result["Naam"], $result["Voornaam"], $result["Wachtwoord"]);
-            }
-        } else {
-            return null;
+        $this->free();
+        $beschikbaarheden = array();
+        foreach ($rs as $result) {
+            $beschikbaarheid = new \PizzaPunt\entities\Tijdspanne(new \PizzaPunt\entities\Datum($result["begindag"], $result["beginmaand"]),new \PizzaPunt\entities\Datum($result["einddag"], $result["eindmaand"]));
+            array_push($beschikbaarheden, $beschikbaarheid);
         }
+        return $beschikbaarheden;
+    }
+
+    public function readIngredienten($productID) {
+                //MySQL query
+        $query = "select IngredientID " .
+                "from Ingredienten " .
+                "inner join ProductIngredienten " .
+                "using(IngredientenID) " .
+                "where ProductID = " . $productID . ";";
+        
+        $rs = $this->getPDO()->query($query);
+        $this->free();
+        $ingredienten = array();
+        foreach ($rs as $result) {
+            array_push($ingredienten, $result["IngredientID"]);
+        }
+        return $ingredienten;
     }
 
 }

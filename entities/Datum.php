@@ -13,6 +13,10 @@ class Datum {
         $this->maand = $maand;
         $this->jaar = $jaar;
     }
+        public function __construct($dag, $maand) {
+        $this->dag = $dag;
+        $this->maand = $maand;
+    }
 
     //Getters
     public function getDag() {
