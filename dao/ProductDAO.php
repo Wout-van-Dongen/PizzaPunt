@@ -11,14 +11,14 @@ class ProductDAO extends DataAccesObject {
     public function readAll() {
         //MySQL query
         $query = "select ProductID,Naam,CategoryID,Prijs,Beschrijving from Product;";
-        
-        $rs = $this->getPDO()->query($query);
+         $rs = $this->getPDO()->query($query);
+         print_r($rs);
         $this->free();
         $producten = array();
-        foreach ($rs as $result) {
-            $product = new \PizzaPunt\entities\Product($result["ProductID"],$result["Naam"],$result["CategoryID"],1.5,$result["Beschrijving"]);
-            array_push($producten, $product);
-        }
+       foreach ($rs as $result) {
+            $product = new \PizzaPunt\entities\Product($result["ProductID"],$result["Naam"],$result["CategoryID"], $result["Prijs"],$result["Beschrijving"]);
+           array_push($producten, $product);
+       }
         return $producten;
     }
 
@@ -47,10 +47,10 @@ class ProductDAO extends DataAccesObject {
 
     public function readIngredienten($productID) {
                 //MySQL query
-        $query = "select IngredientenID " .
-                "from Ingredienten " .
-                "inner join ProductIngredienten " .
-                "using(IngredientenID) " .
+        $query = "select IngredientenID  " .
+                "from Ingredienten  " .
+                "inner join ProductIngredienten  " .
+                "using(IngredientenID)  " .
                 "where ProductID = " . $productID . ";";
         
         $rs = $this->getPDO()->query($query);

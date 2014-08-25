@@ -24,7 +24,7 @@ class KlantService {
     }
     
     public function validate($username, $wachtwoord){
-        if($this->klantDAO->readKlant($username)->getWachtwoord()==$wachtwoord){
+        if($this->klantDAO->readKlant($username)->getWachtwoord()==md5($wachtwoord)){
         return true;
         }else{
         return false;

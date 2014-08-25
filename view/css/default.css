@@ -54,18 +54,65 @@ header h1{
 
 }
 
+/*Menu*/
+section#product-menu{
+    display:inline-block;
+
+    width:196px;
+    height:100%;
+}
+
 /*Pizza lijst*/
 
 section#pizza-aanbod{
-    background-color:rgba(0,0,0,0.6);
-    
+    display:inline-block;
+    // background-color:rgba(0,0,0,0.6);
+    width:600px;
+}
+
+section#pizza-aanbod ul li img{
+    height:80px;
+    width:80px;
+}
+
+section#pizza-aanbod ul li h3{
+    font-size: 12pt;
+    font-weight: bolder;
 }
 
 section#pizza-aanbod ul li{
-    background-color:rgba(200,200,255,0.3);
+    height:120px;
+    background-color:rgba(255,255,255,0.4);
     border:0px solid #000000;
     padding:10px;
     margin: 2px 10px;
     border-radius: 10px
 }
 
+section#pizza-aanbod ul li span{
+    display:inline-block;
+}
+
+
+section#pizza-aanbod ul li span.description{
+    display:inline-block;
+    height:65px;
+    width:200px;
+}
+
+section#pizza-aanbod ul li span.prijs{
+    display:inline-block;
+    width:50px;
+}
+
+section#pizza-aanbod ul li span form input{
+    display:inline-block;
+    height:65px;
+    width:50px;
+}
+
+section#pizza-aanbod ul li span form input{
+    display:inline-block;
+    white-space: normal;
+        height:65px;
+}

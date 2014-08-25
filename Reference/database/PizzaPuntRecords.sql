@@ -20,11 +20,11 @@ INSERT INTO Adres (AdresID, Straat, Huisnr, Gemeente, Postcode) VALUES(4,'Mijnwe
 -- Klant -------------------------------------------------
 -- -------------------------------------------------------
 
-INSERT INTO Klant (Username, Voornaam, Naam) VALUES('JefVDH','Jefke', 'Vanop Den Hoeck');
-INSERT INTO Klant (Username, Voornaam, Naam) VALUES('Fieetje','Stefanie', 'Kiezelmans');
-INSERT INTO Klant (Username, Voornaam, Naam) VALUES('RockyRangers','Rocky', 'Rangers');
-INSERT INTO Klant (Username, Voornaam, Naam) VALUES('CGPizza','Christine', 'Goevearts');
-INSERT INTO Klant (Username, Voornaam, Naam) VALUES('Raphaelle','Kevin', 'Kiezelmans');
+INSERT INTO Klant (Username, Voornaam, Naam, Wachtwoord) VALUES('JefVDH','Jefke', 'Vanop Den Hoeck', 'ea6061500dbbe49149095f6fa3578920');
+INSERT INTO Klant (Username, Voornaam, Naam, Wachtwoord) VALUES('Fieetje','Stefanie', 'Kiezelmans', 'caaa386595e0ecd7edf94eb9b316175c');
+INSERT INTO Klant (Username, Voornaam, Naam, Wachtwoord) VALUES('RockyRangers','Rocky', 'Rangers', 'a18b4f606b97eae0e4c5837dfb3b6db3');
+INSERT INTO Klant (Username, Voornaam, Naam, Wachtwoord) VALUES('CGPizza','Christine', 'Goevearts', '19d460b86fbb64e06f5fb5518ff54c83');
+INSERT INTO Klant (Username, Voornaam, Naam, Wachtwoord) VALUES('Raphaelle','Kevin', 'Kiezelmans', 'fc22ae4c9eedc5269fc424824fedb767');
 
 -- -------------------------------------------------------
 -- KlantAdres --------------------------------------------
@@ -40,14 +40,14 @@ INSERT INTO KlantAdres (Username, AdresID) VALUES(5,4);
 -- Product -----------------------------------------------
 -- -------------------------------------------------------
 
-INSERT INTO Product (ProductID, Naam, CategoryID, Beschrijving) values(1,'Pizza Lobster','Pizza' , 'Luxe pizza gegarneerd met stukjes schaaldier.');
-INSERT INTO Product (ProductID, Naam, CategoryID, Beschrijving) values(2,'Pizza Green','Pizza' , 'Pizza bedekt met verscheidene groenten en afgewerkt met wat kruidenkaas.');
-INSERT INTO Product (ProductID, Naam, CategoryID) values(3,'Pizza Citrus','Pizza');
-INSERT INTO Product (ProductID, Naam, CategoryID) values(4,'Coza Cola','Drank');
-INSERT INTO Product (ProductID, Naam, CategoryID) values(5,'Coza Cola Lite','Drank');
-INSERT INTO Product (ProductID, Naam, CategoryID) values(6,'Coza Cola Null','Drank');
-INSERT INTO Product (ProductID, Naam, CategoryID) values(7,'Pizza Nomnom','Pizza');
-INSERT INTO Product (ProductID, Naam, CategoryID, Beschrijving) values(8,'Pizza BBQ','Pizza' , 'Pizza bedekt met allerlei BBQ specialiteiten.');
+INSERT INTO Product (ProductID, Naam, CategoryID, Beschrijving, Prijs) values(1,'Pizza Lobster','Pizza' , 'Luxe pizza gegarneerd met stukjes schaaldier.', 16.92);
+INSERT INTO Product (ProductID, Naam, CategoryID, Beschrijving, Prijs) values(2,'Pizza Green','Pizza' , 'Pizza bedekt met verscheidene groenten en afgewerkt met wat kruidenkaas.', 8);
+INSERT INTO Product (ProductID, Naam, CategoryID, Prijs) values(3,'Pizza Citrus','Pizza', 6.80);
+INSERT INTO Product (ProductID, Naam, CategoryID, Prijs) values(4,'Coza Cola','Drank', 1.5);
+INSERT INTO Product (ProductID, Naam, CategoryID, Prijs) values(5,'Coza Cola Lite','Drank', 1.5);
+INSERT INTO Product (ProductID, Naam, CategoryID, Prijs) values(6,'Coza Cola Null','Drank', 1.5);
+INSERT INTO Product (ProductID, Naam, CategoryID, Prijs) values(7,'Pizza Nomnom','Pizza', 7.2);
+INSERT INTO Product (ProductID, Naam, CategoryID, Beschrijving, Prijs) values(8,'Pizza BBQ','Pizza' , 'Pizza bedekt met allerlei BBQ specialiteiten.', 9.99);
 
 -- -------------------------------------------------------
 -- Bestellingen ------------------------------------------

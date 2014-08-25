@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `PizzaPunt`.`Klant` (
   `Username` VARCHAR(255) NOT NULL,
   `Naam` VARCHAR(255) NOT NULL,
   `Voornaam` VARCHAR(255) NOT NULL,
-  `Passwoord` VARCHAR(255) NOT NULL,
+  `Wachtwoord` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`Username`))
 ENGINE = InnoDB;
 
@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `PizzaPunt`.`Product` (
   `Naam` VARCHAR(255) NOT NULL,
   `CategoryID` VARCHAR(255) NOT NULL,
   `Beschrijving` TEXT NULL,
+`Prijs` DOUBLE NOT NULL,
   PRIMARY KEY (`ProductID`),
   INDEX `fk_Product_Category_idx` (`CategoryID` ASC),
   CONSTRAINT `fk_Product_Category`

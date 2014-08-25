@@ -32,20 +32,24 @@
 
 
             </section>
+            <section id="product-menu">
+                
+            </section>
             <section id="pizza-aanbod">
                 <ul>
                     <?php
                     foreach ($producten as $product) {
                         print "<li>";
-                        print "<h3>Naam: ";
+                        print "<h3> ";
                         print $product->getNaam();
                         print "</h3>";
                         print "<img class=\"product\" src=\"view/img/pizza-icon.png\"/>";
                         print "<span class=\"description\">" . $product->getBeschrijving() . "</span>";
-                        print "<span class=\"prijs\">" . $product->getPrijs() . "</span>";
+                        print "<span class=\"prijs\"> &euro;" . $product->getPrijs() . "</span>";
                         print "<span><form><input type=\"number\" name=\"aantal\"/><input type=\"submit\" value=\"Voeg aan mandje toe\"/></form></span>";
                         print "<span> Ingredienten: ";
-                        foreach ($product->getIngredienten() as $ingredient) {
+                        $ingredienten = $product->getIngredienten();
+                        foreach ($ingredienten as $ingredient) {
                             print $ingredient->getIngredientID();
                         }
                         print "</span";

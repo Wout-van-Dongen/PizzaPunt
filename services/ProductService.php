@@ -18,9 +18,11 @@ class ProductService {
         $producten = $this->productDAO->readAll();
         foreach ($producten as $product) {
             $ingredienten = $this->productDAO->readIngredienten($product->getProductID());
-            //foreach ($ingredienten as $ingredient) {
-                //$product->addIngredient($ingredient);
-            //}
+                        foreach ($ingredienten as $ingredient) {
+                           
+                $product->addIngredient($ingredient);
+                print_r($product->getIngredienten());
+            }
             // $beschikbaarheden = $this->productDAO->readBeschikbaarheid($product->getProductID());
             // $product->setBeschikbaarheden($beschikbaarheden);
         }
