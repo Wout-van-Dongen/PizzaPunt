@@ -40,16 +40,18 @@
                              . "<th>Artikelprijs</th>"
                              . "<th>Aantal</th>"
                              . "<th>Prijs</th>"
+                                . "<th></th>"
                             . "</tr>"
                             . "</thead><tbody>";
                     foreach ($winkelmand as $item)
                     {
                         print "<tr>";
                         print "<td>" . $item["product"]->getNaam() . "</td>";
-                         print "<td>" . $item["product"]->getBeshcrijving() . "</td>";
+                         print "<td>" . $item["product"]->getBeschrijving() . "</td>";
                           print "<td>&euro;" . $item["product"]->getPrijs() . "</td>";
                           print "<td>" . $item["aantal"] . "</td>";
-                          print "<td>&euro;" . $item["aantal"]*$item["product"] . "</td>";
+                          print "<td>&euro;" . $item["aantal"]*$item["product"]->getPrijs() . "</td>";
+                          print "<td> <a href=\"controllers/WinkelmandController.php?action=rm&amp;pid=" .  $item["product"]->getProductID() .    "\"/>verwijder uit mandje</a></td>";
                           print " </tr>";
                     }
                     print "</tbody><tfoot></tfoot></table>";
@@ -71,7 +73,7 @@
                         print "<span class=\"description\">" . $product->getBeschrijving() . "</span>";
                         print "<span class=\"prijs\"> &euro;" . $product->getPrijs() . "</span>";
                         print "<span><form><input type=\"number\" value=\"0\" name=\"aantal\"/>" .
-                                "<input type=\"hidden\" value=\"" . $product->getProductID() . " \" name=\"productID\"/>" .
+                                "<input type=\"hidden\" value=\"" . $product->getProductID() . " \" name=\"pid\"/>" .
                                 "<input type=\"submit\" value=\"Voeg aan mandje toe\"/></form></span>";
                         print "<span class=\"product-ingredienten\"> ";
                         $ingredienten = $product->getIngredienten();

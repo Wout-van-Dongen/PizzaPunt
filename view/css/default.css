@@ -159,3 +159,13 @@ section#pizza-aanbod ul li span form input[type="submit"]{
     height:60px;
     width:55px;
 }
+
+
+
+
+/*WinkelMandje*/
+
+section#winkelmand{
+    background:#ffffff;
+        border-bottom:10px solid #000099;
+}

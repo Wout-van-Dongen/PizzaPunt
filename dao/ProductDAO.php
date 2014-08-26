@@ -22,7 +22,13 @@ class ProductDAO extends DataAccesObject {
     }
 
     public function readProduct($productID) {
-        
+        //MySQL query
+        $query = "select ProductID,Naam,CategoryID,Prijs,Beschrijving from Product where ProductID = " . $productID;
+         $rs = $this->getPDO()->query($query);
+        $this->free();
+            $result = $rs-> fetch();
+           return new \PizzaPunt\entities\Product($result["ProductID"],$result["Naam"],$result["CategoryID"], $result["Prijs"],$result["Beschrijving"]);
+       
     }
 
     public function readBeschikbaarheid($productID) {

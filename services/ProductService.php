@@ -34,9 +34,9 @@ class ProductService {
     public function readProduct($productID)
     {
         $product = $this->productDAO->readProduct($productID);
-        print_r($product);
-      //  $ingredienten = $this->ingredientDAO->readIngredienten($product->getProductID());
-        //$product->setIngredienten($ingredienten);
+
+      $ingredienten = $this->ingredientDAO->readIngredienten($product->getProductID());
+        $product->setIngredienten($ingredienten);
         return $product;
     }
 
