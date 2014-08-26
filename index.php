@@ -12,10 +12,7 @@ $productService = new services\ProductService();
 
 $producten = $productService->readAll();
 
-//setting winkelmand if not yet done
-if(!isSet($_SESSION["winkelmand"])){
-$_SESSION["winkelmand"] = array();    
-}
+
 
 //Setting dummy content to session
 $artikels = array();
