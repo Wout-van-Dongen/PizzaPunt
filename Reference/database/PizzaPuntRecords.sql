@@ -63,7 +63,7 @@ INSERT INTO Ingredienten (IngredientenID, Vegetarisch) VALUES('tomatensaus', tru
 INSERT INTO Ingredienten (IngredientenID, Vegetarisch) VALUES('kreeft', false);
 INSERT INTO Ingredienten (IngredientenID, Vegetarisch) VALUES('crab', false);
 INSERT INTO Ingredienten (IngredientenID, Vegetarisch) VALUES('broccoli', true);
-INSERT INTO Ingredienten (IngredientenID, Vegetarisch) VALUES('spinazie', false);
+INSERT INTO Ingredienten (IngredientenID, Vegetarisch) VALUES('spinazie', true);
 INSERT INTO Ingredienten (IngredientenID, Vegetarisch) VALUES('mozerella', true);
 INSERT INTO Ingredienten (IngredientenID, Vegetarisch) VALUES('ementaller', true);
 INSERT INTO Ingredienten (IngredientenID, Vegetarisch) VALUES('citroen', true);

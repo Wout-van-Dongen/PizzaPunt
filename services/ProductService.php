@@ -27,8 +27,6 @@ class ProductService {
             {
                 $product->addIngredient($ingredient);
             }
-            // $beschikbaarheden = $this->productDAO->readBeschikbaarheid($product->getProductID());
-            // $product->setBeschikbaarheden($beschikbaarheden);
         }
         return $producten;
     }
@@ -36,11 +34,21 @@ class ProductService {
     public function readProduct($productID)
     {
         $product = $this->productDAO->readProduct($productID);
-        $ingredienten = $this->productDAO->readIngredienten($product->getProductID());
-        $product->setIngredienten($ingredienten);
-        $beschikbaarheden = $this->productDAO->readBeschikbaarheid($product->getProductID());
-        $product->setBeschikbaarheden($beschikbaarheden);
+        print_r($product);
+      //  $ingredienten = $this->ingredientDAO->readIngredienten($product->getProductID());
+        //$product->setIngredienten($ingredienten);
         return $product;
+    }
+
+    public function readMultipleProducts($productIDs)
+    {
+        $producten = array();
+        foreach ($productIDs as $productID)
+        {
+            $product = $this->readProduct($productID);
+            array_push($producten, $product);
+        }
+        return $producten;
     }
 
 }

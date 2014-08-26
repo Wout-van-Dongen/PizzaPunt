@@ -10,7 +10,7 @@ class ProductDAO extends DataAccesObject {
 
     public function readAll() {
         //MySQL query
-        $query = "select ProductID,Naam,CategoryID,Prijs,Beschrijving from Product;";
+        $query = "select ProductID,Naam,CategoryID,Prijs,Beschrijving from Product order by CategoryID;";
          $rs = $this->getPDO()->query($query);
         $this->free();
         $producten = array();

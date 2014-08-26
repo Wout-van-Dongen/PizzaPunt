@@ -29,8 +29,32 @@
                 <h1>Pizzeria PizzaPunt</h1>
             </header>
             <section id="winkelmand">
-
-
+                <?php
+                if (!empty($winkelmand))
+                {
+                    print "<h2>Winkelmandje</h2>";
+                    print "<table><thead>"
+                    . "<tr>"
+                            . "<th>Artikel</th>"
+                             . "<th>Bescrijving</th>"
+                             . "<th>Artikelprijs</th>"
+                             . "<th>Aantal</th>"
+                             . "<th>Prijs</th>"
+                            . "</tr>"
+                            . "</thead><tbody>";
+                    foreach ($winkelmand as $item)
+                    {
+                        print "<tr>";
+                        print "<td>" . $item["product"]->getNaam() . "</td>";
+                         print "<td>" . $item["product"]->getBeshcrijving() . "</td>";
+                          print "<td>&euro;" . $item["product"]->getPrijs() . "</td>";
+                          print "<td>" . $item["aantal"] . "</td>";
+                          print "<td>&euro;" . $item["aantal"]*$item["product"] . "</td>";
+                          print " </tr>";
+                    }
+                    print "</tbody><tfoot></tfoot></table>";
+                }
+                ?>
             </section>
             <section id="product-menu">
 
@@ -41,14 +65,14 @@
                     foreach ($producten as $product)
                     {
                         print "<li>";
-                        print "<h3> ";
-                        print $product->getNaam();
-                        print "</h3>";
+                        print "<h3> " . $product->getNaam() . "</h3>";
                         print "<figure><img class=\"product\" src=\"view/img/pizza-icon.png\"/></figure>";
                         print "<div class=\"product-info\">";
                         print "<span class=\"description\">" . $product->getBeschrijving() . "</span>";
                         print "<span class=\"prijs\"> &euro;" . $product->getPrijs() . "</span>";
-                        print "<span><form><input type=\"number\" value=\"0\" name=\"aantal\"/><input type=\"submit\" value=\"Voeg aan mandje toe\"/></form></span>";
+                        print "<span><form><input type=\"number\" value=\"0\" name=\"aantal\"/>" .
+                                "<input type=\"hidden\" value=\"" . $product->getProductID() . " \" name=\"productID\"/>" .
+                                "<input type=\"submit\" value=\"Voeg aan mandje toe\"/></form></span>";
                         print "<span class=\"product-ingredienten\"> ";
                         $ingredienten = $product->getIngredienten();
                         foreach ($ingredienten as $ingredient)
@@ -57,8 +81,14 @@
                         }
                         print "</span>";
                         print "</div>";
-                        //If vegetarisch load veggie label, else load non-veggie label
-                        print "<figure><img class=\"vegetarisch\" src=\"view/img/veggie.png\"/></figure>";
+                        if ($product->isVegetarisch())
+                        {
+                            print "<figure><img class=\"vegetarisch\" src=\"view/img/veggie.png\"/></figure>";
+                        }
+                        else
+                        {
+                            print "<figure><img class=\"vegetarisch\" src=\"view/img/noveggie.png\"/></figure>";
+                        }
                         print "</li>";
                     }
                     ?>

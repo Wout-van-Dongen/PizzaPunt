@@ -77,7 +77,7 @@ class Product {
     {
         foreach ($this->ingredienten as $ingredient)
         {
-            if ($ingredient->isVegetarisch == false)
+            if ($ingredient->isVegetarisch() == false)
             {
                 return false;
             }
