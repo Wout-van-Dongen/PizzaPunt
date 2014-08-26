@@ -12,7 +12,6 @@ class ProductDAO extends DataAccesObject {
         //MySQL query
         $query = "select ProductID,Naam,CategoryID,Prijs,Beschrijving from Product;";
          $rs = $this->getPDO()->query($query);
-         print_r($rs);
         $this->free();
         $producten = array();
        foreach ($rs as $result) {
@@ -43,23 +42,6 @@ class ProductDAO extends DataAccesObject {
             array_push($beschikbaarheden, $beschikbaarheid);
         }
         return $beschikbaarheden;
-    }
-
-    public function readIngredienten($productID) {
-                //MySQL query
-        $query = "select IngredientenID  " .
-                "from Ingredienten  " .
-                "inner join ProductIngredienten  " .
-                "using(IngredientenID)  " .
-                "where ProductID = " . $productID . ";";
-        
-        $rs = $this->getPDO()->query($query);
-        $this->free();
-        $ingredienten = array();
-        foreach ($rs as $result) {
-            array_push($ingredienten, $result["IngredientenID"]);
-        }
-        return $ingredienten;
     }
 
 }

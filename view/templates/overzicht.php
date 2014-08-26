@@ -33,26 +33,32 @@
 
             </section>
             <section id="product-menu">
-                
+
             </section>
             <section id="pizza-aanbod">
                 <ul>
                     <?php
-                    foreach ($producten as $product) {
+                    foreach ($producten as $product)
+                    {
                         print "<li>";
                         print "<h3> ";
                         print $product->getNaam();
                         print "</h3>";
-                        print "<img class=\"product\" src=\"view/img/pizza-icon.png\"/>";
+                        print "<figure><img class=\"product\" src=\"view/img/pizza-icon.png\"/></figure>";
+                        print "<div class=\"product-info\">";
                         print "<span class=\"description\">" . $product->getBeschrijving() . "</span>";
                         print "<span class=\"prijs\"> &euro;" . $product->getPrijs() . "</span>";
-                        print "<span><form><input type=\"number\" name=\"aantal\"/><input type=\"submit\" value=\"Voeg aan mandje toe\"/></form></span>";
-                        print "<span> Ingredienten: ";
+                        print "<span><form><input type=\"number\" value=\"0\" name=\"aantal\"/><input type=\"submit\" value=\"Voeg aan mandje toe\"/></form></span>";
+                        print "<span class=\"product-ingredienten\"> ";
                         $ingredienten = $product->getIngredienten();
-                        foreach ($ingredienten as $ingredient) {
-                            print $ingredient->getIngredientID();
+                        foreach ($ingredienten as $ingredient)
+                        {
+                            print $ingredient->getIngredientID() . ", ";
                         }
-                        print "</span";
+                        print "</span>";
+                        print "</div>";
+                        //If vegetarisch load veggie label, else load non-veggie label
+                        print "<figure><img class=\"vegetarisch\" src=\"view/img/veggie.png\"/></figure>";
                         print "</li>";
                     }
                     ?>

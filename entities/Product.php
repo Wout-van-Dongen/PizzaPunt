@@ -2,6 +2,9 @@
 
 namespace PizzaPunt\entities;
 
+//Imports
+require_once("Ingredient.php");
+
 class Product {
 
     private $productID;
@@ -12,7 +15,8 @@ class Product {
     private $ingredienten;
     private $beschikbaarheden;
 
-    public function __construct($productID, $naam, $category, $prijs, $beschrijving){
+    public function __construct($productID, $naam, $category, $prijs, $beschrijving)
+    {
         $this->productID = $productID;
         $this->naam = $naam;
         $this->category = $category;
@@ -21,71 +25,99 @@ class Product {
         $this->ingredienten = array();
         $this->beschikbaarheden = array();
     }
-    
+
     //Adders
-    public function addIngredient($ingredient) {
+    public function addIngredient($ingredient)
+    {
         array_push($this->ingredienten, $ingredient);
     }
 
-    public function addBeschikbaarheid($beschikbaarheid) {
+    public function addBeschikbaarheid($beschikbaarheid)
+    {
         array_push($this->beschikbaarheden, $beschikbaarheid);
     }
 
     //Getters
-    public function getProductID() {
+    public function getProductID()
+    {
         return $this->productID;
     }
 
-    public function getNaam() {
+    public function getNaam()
+    {
         return $this->naam;
     }
 
-    public function getCategory() {
+    public function getCategory()
+    {
         return $this->category;
     }
 
-    public function getPrijs() {
+    public function getPrijs()
+    {
         return $this->prijs;
     }
 
-    public function getBeschrijving() {
+    public function getBeschrijving()
+    {
         return $this->beschrijving;
     }
 
-    public function getIngredienten() {
+    public function getIngredienten()
+    {
         return $this->ingredienten;
     }
 
-    public function getBeschikbaarheden() {
+    public function getBeschikbaarheden()
+    {
         return $this->beschikbaarheden;
     }
 
+    public function isVegetarisch()
+    {
+        foreach ($this->ingredienten as $ingredient)
+        {
+            if ($ingredient->isVegetarisch == false)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     //Setters
-    public function setProductID($productID) {
+    public function setProductID($productID)
+    {
         $this->productID = $productID;
     }
 
-    public function setNaam($naam) {
+    public function setNaam($naam)
+    {
         $this->naam = $naam;
     }
 
-    public function setCategory($category) {
+    public function setCategory($category)
+    {
         $this->category = $category;
     }
 
-    public function setPrijs($prijs) {
+    public function setPrijs($prijs)
+    {
         $this->prijs = $prijs;
     }
 
-    public function setBeschrijving($beschrijving) {
+    public function setBeschrijving($beschrijving)
+    {
         $this->beschrijving = $beschrijving;
     }
 
-    public function setIngredienten($ingredienten) {
+    public function setIngredienten($ingredienten)
+    {
         $this->ingredienten = $ingredienten;
     }
 
-    public function setBeschikbaarheden($beschikbaarheden) {
+    public function setBeschikbaarheden($beschikbaarheden)
+    {
         $this->beschikbaarheden = $beschikbaarheden;
     }
 
