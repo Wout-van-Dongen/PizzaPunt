@@ -4,7 +4,7 @@ namespace PizzaPunt\dao;
 
 //Imports
 require_once("DataAccesObject.php");
-require_once("../entities/Klant.php");
+//require_once("../entities/Klant.php");
 
 class KlantDAO extends DataAccesObject {
 
@@ -24,14 +24,12 @@ class KlantDAO extends DataAccesObject {
         $query = "select Username,Naam,Voornaam,Wachtwoord from Klant where Username = \"" . $username . "\";";
         $rs = $this->getPDO()->query($query);
                         $this->free();
-                        
-                        
-        if (!is_null($rs)) {
+                                 if (!is_null($rs)) {
             foreach($rs as $result){
             return new \PizzaPunt\entities\Klant($result["Username"], $result["Naam"], $result["Voornaam"], $result["Wachtwoord"]);
             }
         } else {
-            return null;
+     throw  new \PizzaPunt\exceptions\NullPointerException();
         }
     }
 

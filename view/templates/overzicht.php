@@ -7,7 +7,7 @@
     </head>
     <body>
         <section id="user-status-section">
-            <?php //if user is not logged  ?>
+            <?php// if(!isset($_SESSION["usr"])){  ?>
             <form id="loginbar" method="post" action="controllers/AanmeldController.php">
                 <label form="loginbar" for="username-login">Gebruikersnaam: </label>
                 <input id="username-login" type="text" name="usr"/>
@@ -18,7 +18,7 @@
             <span>
                 <a href="#" title="registreren">Meld je hier aan als nieuwe klant.</a>
             </span>
-            <?php //else show user options (name, logout) ?>
+ 
         </section>
         <div id="wrapper">
             <header>
@@ -30,34 +30,36 @@
             </header>
             <section id="winkelmand">
                 <div id="winkemand-container">
-                <?php
-                if (!empty($winkelmand))
-                {
-                    print "<h2>Winkelmandje</h2>";
-                    print "<table><thead>"
-                    . "<tr>"
-                            . "<th>Artikel</th>"
-                             . "<th>Bescrijving</th>"
-                             . "<th>Artikelprijs</th>"
-                             . "<th>Aantal</th>"
-                             . "<th>Prijs</th>"
-                                . "<th></th>"
-                            . "</tr>"
-                            . "</thead><tbody>";
-                    foreach ($winkelmand as $item)
+                    <?php
+                    if (!empty($winkelmand))
                     {
-                        print "<tr>";
-                        print "<td>" . $item["product"]->getNaam() . "</td>";
-                         print "<td>" . $item["product"]->getBeschrijving() . "</td>";
-                          print "<td>&euro;" . $item["product"]->getPrijs() . "</td>";
-                          print "<td>" . $item["aantal"] . "</td>";
-                          print "<td>&euro;" . $item["aantal"]*$item["product"]->getPrijs() . "</td>";
-                          print "<td> <a href=\"controllers/WinkelmandController.php?action=rm&amp;pid=" .  $item["product"]->getProductID() .    "\"/>verwijder uit mandje</a></td>";
-                          print " </tr>";
+                        print "<h2>Winkelmandje</h2>";
+                        print "<table><thead>"
+                                . "<tr>"
+                                . "<th></th>"
+                                . "<th>Artikel</th>"
+                                . "<th>Bescrijving</th>"
+                                . "<th>Artikelprijs</th>"
+                                . "<th>Aantal</th>"
+                                . "<th>Prijs</th>"
+                                . "<th></th>"
+                                . "</tr>"
+                                . "</thead><tbody>";
+                        foreach ($winkelmand as $item)
+                        {
+                            print "<tr>";
+                            print "<td><img class=\"winkelmand-image\" src=\"images/producten/p" . $item["product"]->getProductID() . ".png\"/></td>";
+                            print "<td>" . $item["product"]->getNaam() . "</td>";
+                            print "<td>" . $item["product"]->getBeschrijving() . "</td>";
+                            print "<td>&euro;" . $item["product"]->getPrijs() . "</td>";
+                            print "<td>" . $item["aantal"] . "</td>";
+                            print "<td>&euro;" . $item["aantal"] * $item["product"]->getPrijs() . "</td>";
+                            print "<td> <a href=\"controllers/WinkelmandController.php?action=rm&amp;pid=" . $item["product"]->getProductID() . "\"/>verwijder uit mandje</a></td>";
+                            print " </tr>";
+                        }
+                        print "</tbody><tfoot></tfoot></table>";
                     }
-                    print "</tbody><tfoot></tfoot></table>";
-                }
-                ?>
+                    ?>
                 </div>
             </section>
             <section id="pizza-aanbod">
@@ -67,7 +69,7 @@
                     {
                         print "<li>";
                         print "<h3> " . $product->getNaam() . "</h3>";
-                        print "<figure><img class=\"product\" src=\"images/producten/p" . $product->getProductID()   . ".png\"/></figure>";
+                        print "<figure><img class=\"product\" src=\"images/producten/p" . $product->getProductID() . ".png\"/></figure>";
                         print "<div class=\"product-info\">";
                         print "<span class=\"description\">" . $product->getBeschrijving() . "</span>";
                         print "<span class=\"prijs\"> &euro;" . $product->getPrijs() . "</span>";

@@ -21,9 +21,10 @@ class AanmeldController implements InterfaceRedirectable {
         if ($this->klantService->validate($usr, $pass))
         {
        $klant =  $this->klantService->readKlant($usr);
-            return $this->redirect("../index.php?usr=" .$klant->getvoorNaam() . " " . $klant->getNaam());
+       $_SESSION["usr"] = $klant;
+        $this->redirect("../index.php");
         }else{
-        $this->redirect("../index.php?err=Uw gebruikernaam en wachtwoord zijn niet met elkaar verbonden" );
+
         }
     }
 

@@ -35,7 +35,7 @@ header{
     background: -ms-linear-gradient(left,#ff7700,#EDD400);
     background: -o-linear-gradient(left,#ff7700,#EDD400);
 
-        border:2px solid #000099;
+    border:2px solid #000099;
     overflow-y:hidden;
     border-bottom:10px solid #000099;
 }
@@ -67,7 +67,7 @@ section#product-menu{
 section#pizza-aanbod{
     display:inline-block;
     width:796px;
-        border:2px solid #000099;
+    border:2px solid #000099;
 }
 
 section#pizza-aanbod ul{
@@ -174,9 +174,40 @@ section#pizza-aanbod ul li span form input[type="submit"]{
 /*WinkelMandje*/
 
 section#winkelmand{
-        border-bottom:10px solid #000099;
+    border-bottom:10px solid #000099;
 }
 section#winkelmand div#winkemand-container{
     margin: 0 10px;
-background: #FFFFFF;
+    background: #FFFFFF;
+}
+
+section#winkelmand table {
+width:600px;
+margin:0px auto;
+}
+
+section#winkelmand table tbody tr{
+height: 25px;
+border-radius: 20px;
+padding:0;
+}
+
+section#winkelmand table tbody td{
+height: 25px;
+padding:0;
+}
+
+section#winkelmand table tbody tr:nth-child(even){
+background-color:#ff9900;
+}
+
+section#winkelmand table tbody tr:nth-child(odd){
+background-color:#ffBB00;
+}
+    
+section#winkelmand img.winkelmand-image{
+    height:50px;
+    width:50px;
+    border-radius: 25px;
+    margin:0;
 }
