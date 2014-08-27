@@ -29,6 +29,7 @@
                 <h1>Pizzeria PizzaPunt</h1>
             </header>
             <section id="winkelmand">
+                <div id="winkemand-container">
                 <?php
                 if (!empty($winkelmand))
                 {
@@ -57,9 +58,7 @@
                     print "</tbody><tfoot></tfoot></table>";
                 }
                 ?>
-            </section>
-            <section id="product-menu">
-
+                </div>
             </section>
             <section id="pizza-aanbod">
                 <ul>
@@ -72,7 +71,7 @@
                         print "<div class=\"product-info\">";
                         print "<span class=\"description\">" . $product->getBeschrijving() . "</span>";
                         print "<span class=\"prijs\"> &euro;" . $product->getPrijs() . "</span>";
-                        print "<span><form><input type=\"number\" value=\"0\" name=\"aantal\"/>" .
+                        print "<span><form action=\"controllers/WinkelmandController.php\" method=\"post\"><input type=\"number\" value=\"0\" name=\"aantal\"/>" .
                                 "<input type=\"hidden\" value=\"" . $product->getProductID() . " \" name=\"pid\"/>" .
                                 "<input type=\"submit\" value=\"Voeg aan mandje toe\"/></form></span>";
                         print "<span class=\"product-ingredienten\"> ";

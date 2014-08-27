@@ -2,57 +2,79 @@
 
 namespace PizzaPunt\controllers;
 
+require_once("InterfaceRedirectable");
+
 //Enable session usage
 session_start();
 
-class WinkelmandController {
+class WinkelmandController  implements InterfaceRedirectable{
 
     public function __construct()
     {
-        if ($_GET["action"] == "rm" && $_GET["pid"] != "")
+//setting winkelmand if not yet done
+        if (!isSet($_SESSION["winkelmand"]))
         {
-            $this->verwijderUitMandje($_GET["pid"]);
-        }
-        else if ($_POST["pid"] != "" && $_POST["aantal"] != "")
-        {
-            $this->voegToeAanMandje($_POST["pid"], $_POST["aantal"]);
-        }
-        else
-        {
-            $this->redirect("index.php");
+            $_SESSION["winkelmand"] = array();
         }
     }
 
     public function voegToeAanMandje($productID, $aantal)
     {
-        //setting winkelmand if not yet done
-        if (!isSet($_SESSION["winkelmand"]))
-        {
-            $_SESSION["winkelmand"] = array();
-        }
 //NEED TO CHECK IF ALREDY PRESENT AND IF VALUES ARE NUMBERS
         $item = array();
         $item["product"] = $productID;
         $item["aantal"] = $aantal;
 
-        $this->redirect("index.php");
+        array_push($_SESSION["winkelmand"], $item);
+
+        $this->redirect("../index.php");
     }
 
     public function verwijderUitMandje($productID)
     {
-$winkelmand = $_SESSION["winkelmand"];
-if (($key = array_search($productID, $winkelmand)) !== false) {
-    unset($winkelmand[$key]);
-}
-$_SESSION["winkelmand"] = $winkelmand;
 
-        $this->redirect("index.php");
+        $winkelmandje = $_SESSION["winkelmand"];
+
+        foreach ($winkelmandje as $key => $item)
+        {
+            print_r($item);
+            print "Expected: " . $item["product"] . " ";
+            print "Found: " . $productID . " ";
+            if ($productID ==  (int)$item["product"])
+            {
+                print "IT FINALLY WORKS!!!!";
+               unset($_SESSION["winkelmand"][$key]);
+            }
+            
+        }
+
+
+        $this->redirect("../index.php");
     }
 
     public function redirect($url)
     {
+        print "redirecting...";
         header("Location: " . $url);
         exit(0);
     }
 
 }
+
+$winkelmandController = new WinkelmandController();
+
+if (isset($_GET["action"]) && $_GET["action"] == "rm")
+{
+    $winkelmandController->verwijderUitMandje($_GET["pid"]);
+}
+if (isset($_POST["pid"]) && isset($_POST["aantal"]))
+{
+    $winkelmandController->voegToeAanMandje($_POST["pid"], $_POST["aantal"]);
+}
+else
+{
+    $winkelmandController->redirect("../index.php");
+}
+
+
+ 
