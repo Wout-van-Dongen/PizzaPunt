@@ -2,7 +2,7 @@
 
 namespace PizzaPunt\controllers;
 
-require_once("InterfaceRedirectable");
+require_once("InterfaceRedirectable.php");
 
 //Enable session usage
 session_start();
@@ -61,19 +61,19 @@ class WinkelmandController  implements InterfaceRedirectable{
 
 }
 
-$winkelmandController = new WinkelmandController();
+$AanmeldController = new WinkelmandController();
 
 if (isset($_GET["action"]) && $_GET["action"] == "rm")
 {
-    $winkelmandController->verwijderUitMandje($_GET["pid"]);
+    $AanmeldController->verwijderUitMandje($_GET["pid"]);
 }
-if (isset($_POST["pid"]) && isset($_POST["aantal"]))
+elseif (isset($_POST["pid"]) && isset($_POST["aantal"]))
 {
-    $winkelmandController->voegToeAanMandje($_POST["pid"], $_POST["aantal"]);
+    $AanmeldController->voegToeAanMandje($_POST["pid"], $_POST["aantal"]);
 }
 else
 {
-    $winkelmandController->redirect("../index.php");
+    $AanmeldController->redirect("../index.php");
 }
 
 

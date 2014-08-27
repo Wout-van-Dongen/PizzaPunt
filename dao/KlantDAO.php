@@ -4,7 +4,7 @@ namespace PizzaPunt\dao;
 
 //Imports
 require_once("DataAccesObject.php");
-require_once("entities/Klant.php");
+require_once("../entities/Klant.php");
 
 class KlantDAO extends DataAccesObject {
 

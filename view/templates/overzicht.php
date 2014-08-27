@@ -8,11 +8,11 @@
     <body>
         <section id="user-status-section">
             <?php //if user is not logged  ?>
-            <form id="loginbar" method="post" action="#">
+            <form id="loginbar" method="post" action="controllers/AanmeldController.php">
                 <label form="loginbar" for="username-login">Gebruikersnaam: </label>
-                <input id="username-login" type="text" name="username"/>
+                <input id="username-login" type="text" name="usr"/>
                 <label form="loginbar" for="wachtwoord-login">Wachtwoord: </label>
-                <input id="wachtwoord-login" type="password" name="wachtwoord"/>
+                <input id="wachtwoord-login" type="password" name="pass"/>
                 <input type="submit" value="aanmelden"/>
             </form>
             <span>
@@ -67,7 +67,7 @@
                     {
                         print "<li>";
                         print "<h3> " . $product->getNaam() . "</h3>";
-                        print "<figure><img class=\"product\" src=\"view/img/pizza-icon.png\"/></figure>";
+                        print "<figure><img class=\"product\" src=\"images/producten/p" . $product->getProductID()   . ".png\"/></figure>";
                         print "<div class=\"product-info\">";
                         print "<span class=\"description\">" . $product->getBeschrijving() . "</span>";
                         print "<span class=\"prijs\"> &euro;" . $product->getPrijs() . "</span>";

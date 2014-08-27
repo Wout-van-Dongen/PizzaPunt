@@ -3,8 +3,8 @@
 namespace PizzaPunt\services;
 
 //Imports
-require_once("entities/Klant.php");
-require_once("dao/KlantDAO.php");
+require_once("../entities/Klant.php");
+require_once("../dao/KlantDAO.php");
 
 class KlantService {
 
