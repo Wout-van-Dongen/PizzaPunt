@@ -3,6 +3,7 @@
 namespace PizzaPunt\controllers;
 
 require_once("InterfaceRedirectable.php");
+require_once("/exeptions/InvalidDataTypeException.php");
 
 //Enable session usage
 session_start();
@@ -20,7 +21,10 @@ class WinkelmandController  implements InterfaceRedirectable{
 
     public function voegToeAanMandje($productID, $aantal)
     {
-//NEED TO CHECK IF ALREDY PRESENT AND IF VALUES ARE NUMBERS
+if(!is_int($productID) || !is_int($aantal)){
+    throw new NotANumberException();
+}
+        
         $item = array();
         $item["product"] = $productID;
         $item["aantal"] = $aantal;

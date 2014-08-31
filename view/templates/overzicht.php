@@ -7,7 +7,7 @@
     </head>
     <body>
         <section id="user-status-section">
-            <?php// if(!isset($_SESSION["usr"])){  ?>
+            <?php // if(!isset($_SESSION["usr"])){  ?>
             <form id="loginbar" method="post" action="controllers/AanmeldController.php">
                 <label form="loginbar" for="username-login">Gebruikersnaam: </label>
                 <input id="username-login" type="text" name="usr"/>
@@ -18,7 +18,7 @@
             <span>
                 <a href="#" title="registreren">Meld je hier aan als nieuwe klant.</a>
             </span>
- 
+
         </section>
         <div id="wrapper">
             <header>
@@ -28,11 +28,12 @@
                 </figure>
                 <h1>Pizzeria PizzaPunt</h1>
             </header>
+
+
             <section id="winkelmand">
                 <div id="winkemand-container">
                     <?php
-                    if (!empty($winkelmand))
-                    {
+                    if (!empty($winkelmand)) {
                         print "<h2>Winkelmandje</h2>";
                         print "<table><thead>"
                                 . "<tr>"
@@ -45,8 +46,7 @@
                                 . "<th></th>"
                                 . "</tr>"
                                 . "</thead><tbody>";
-                        foreach ($winkelmand as $item)
-                        {
+                        foreach ($winkelmand as $item) {
                             print "<tr>";
                             print "<td><img class=\"winkelmand-image\" src=\"images/producten/p" . $item["product"]->getProductID() . ".png\"/></td>";
                             print "<td>" . $item["product"]->getNaam() . "</td>";
@@ -62,42 +62,46 @@
                     ?>
                 </div>
             </section>
-            <section id="pizza-aanbod">
-                <ul>
-                    <?php
-                    foreach ($producten as $product)
-                    {
-                        print "<li>";
-                        print "<h3> " . $product->getNaam() . "</h3>";
-                        print "<figure><img class=\"product\" src=\"images/producten/p" . $product->getProductID() . ".png\"/></figure>";
-                        print "<div class=\"product-info\">";
-                        print "<span class=\"description\">" . $product->getBeschrijving() . "</span>";
-                        print "<span class=\"prijs\"> &euro;" . $product->getPrijs() . "</span>";
-                        print "<span><form action=\"controllers/WinkelmandController.php\" method=\"post\"><input type=\"number\" value=\"0\" name=\"aantal\"/>" .
-                                "<input type=\"hidden\" value=\"" . $product->getProductID() . " \" name=\"pid\"/>" .
-                                "<input type=\"submit\" value=\"Voeg aan mandje toe\"/></form></span>";
-                        print "<span class=\"product-ingredienten\"> ";
-                        $ingredienten = $product->getIngredienten();
-                        foreach ($ingredienten as $ingredient)
-                        {
-                            print $ingredient->getIngredientID() . ", ";
-                        }
-                        print "</span>";
-                        print "</div>";
-                        if ($product->isVegetarisch())
-                        {
-                            print "<figure><img class=\"vegetarisch\" src=\"view/img/veggie.png\"/></figure>";
-                        }
-                        else
-                        {
-                            print "<figure><img class=\"vegetarisch\" src=\"view/img/noveggie.png\"/></figure>";
-                        }
-                        print "</li>";
-                    }
-                    ?>
-                </ul>
-            </section>
+            <?php
+            //Wanneer er fouten zijn opgetreden 
+            if (!empty($fouten)) {
+                include("view/templates/errors.php");
+            } else {
+                ?>
 
+                <section id="pizza-aanbod">
+                    <ul>
+                        <?php
+                        foreach ($producten as $product) {
+                            print "<li>";
+                            print "<h3> " . $product->getNaam() . "</h3>";
+                            print "<figure><img class=\"product\" src=\"images/producten/p" . $product->getProductID() . ".png\"/></figure>";
+                            print "<div class=\"product-info\">";
+                            print "<span class=\"description\">" . $product->getBeschrijving() . "</span>";
+                            print "<span class=\"prijs\"> &euro;" . $product->getPrijs() . "</span>";
+                            print "<span><form action=\"controllers/WinkelmandController.php\" method=\"post\"><input type=\"number\" value=\"0\" name=\"aantal\"/>" .
+                                    "<input type=\"hidden\" value=\"" . $product->getProductID() . " \" name=\"pid\"/>" .
+                                    "<input type=\"submit\" value=\"Voeg aan mandje toe\"/></form></span>";
+                            print "<span class=\"product-ingredienten\"> ";
+                            $ingredienten = $product->getIngredienten();
+                            foreach ($ingredienten as $ingredient) {
+                                print $ingredient->getIngredientID() . ", ";
+                            }
+                            print "</span>";
+                            print "</div>";
+                            if ($product->isVegetarisch()) {
+                                print "<figure><img class=\"vegetarisch\" src=\"view/img/veggie.png\"/></figure>";
+                            } else {
+                                print "<figure><img class=\"vegetarisch\" src=\"view/img/noveggie.png\"/></figure>";
+                            }
+                            print "</li>";
+                        }
+                        ?>
+                    </ul>
+                </section>
+                <?php
+            }
+            ?>
         </div>
     </body>
 </html>
